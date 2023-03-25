@@ -1,25 +1,36 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>HTML Wrapper for JavaScript Code</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js" integrity="sha512-3RlxD1bW34eFKPwj9gUXEWtdSMC59QqIqHnD8O/NoTwSJhgxRizdcFVQhUMFyTp5RwLTDL0Lbcqtl8b7bFAzog==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <head>
+    <title>HTML Wrapper for JavaScript Code</title>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"
+      integrity="sha512-3RlxD1bW34eFKPwj9gUXEWtdSMC59QqIqHnD8O/NoTwSJhgxRizdcFVQhUMFyTp5RwLTDL0Lbcqtl8b7bFAzog=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
     <style>
-        .content {
-            width: 800px;
-            margin: 0 auto;
-                }
-    
-        body {background-color: black;}
-        h1   {color: blue;}
-        pre    {color: red;
-                font-size: 18px;;}
-        </style>
-</head>
-<body>
+      .content {
+        width: 800px;
+        margin: 0 auto;
+      }
+
+      body {
+        background-color: black;
+      }
+      h1 {
+        color: blue;
+      }
+      pre {
+        color: red;
+        font-size: 18px;
+      }
+    </style>
+  </head>
+  <body>
     <div class="content">
-        <!-- Page content -->
-      
-    <pre>
+      <!-- Page content -->
+
+      <pre>
            GREGORY                  GELONG               KREISMAN
   善善善善善善善乡乡上若若若若若若俗乡若俗若俗俗俗俗俗俗若若若若乡上上乡善善善善善善善
   善善善善善善随若乡水若若若若俗俗俗俗俗俗俗俗俗俗俗俗俗俗若若若若上乡水善善善善善善善
@@ -30,56 +41,48 @@
   善善善善善善俗若水若俗若若若俗若若俗若若俗若若俗若若若俗若若若若若若水若俗善善善善善
   善善善善善善俗俗若若俗俗俗若若水若若若若俗若若若若水若若俗俗俗若若若俗若俗善善善善善
   善善善善善善俗俗俗若若俗俗俗俗俗俗若若若俗若若若俗俗俗俗俗俗俗若若俗俗俗俗善善善善善
-    </pre>
-    <div id="sketch-holder">
+    </pre
+      >
+      <div id="sketch-holder">
         <!-- Our sketch will go here! size in script -->
-
       </div>
+    </div>
+    <script>
+      let cnv;
+      let sz = 10;
 
-      </div>
-	<script>
-        let cnv;
-        let sz = 10;
+      function setup() {
+        cnv = createCanvas(800, 800);
+        cnv.parent("sketch-holder");
 
-        function setup(){
-           cnv= createCanvas(800,800);
-           cnv.parent('sketch-holder');
+        //let cx = (windowWidth-cnv.width)/2
+        //let cy = (windowHeight-cnv.height)/1.2
+        //cnv.position(cx,cy)
 
-           //let cx = (windowWidth-cnv.width)/2
-           //let cy = (windowHeight-cnv.height)/1.2
-           //cnv.position(cx,cy)
+        background(255, 255, 0);
+        print(width);
+        noStroke();
+      }
+      function draw() {
+        sz = map(mouseX, 0, width, 100, 10);
+        sz = constrain(sz, 10, 100);
+        let boxw = width;
+        while (boxw > 0) {
+          let boxh = height;
+          while (boxh > 0) {
+            let x = width - boxw; // first pass is 0
+            let y = height - boxh; // first pas is 0
+            //fill(random(255),random(255), random(255));
+            fill(random(255));
+            rect(x, y, sz, sz); //
 
-            background(255,255,0);
-            print(width)
-            noStroke();
-
-
+            boxh -= sz;
+          }
+          boxw -= sz;
         }
-        function draw(){
-            sz = map(mouseX,0,width,100,10)
-            sz = constrain(sz, 10, 100)
-            let boxw = width
-            while(boxw >0){
-                
-                let boxh = height;
-                while(boxh >0){
-                    let x = width-boxw // first pass is 0
-                    let y = height - boxh // first pas is 0
-                    //fill(random(255),random(255), random(255));
-                    fill(random(255))
-                    rect(x,y,sz,sz)//
-                    
-                    boxh-=sz;
-                }
-                boxw-=sz
-            }
-            
-            
-            //noLoop()
-        
-            
-        }
-		
-	</script>
-</body>
+
+        //noLoop()
+      }
+    </script>
+  </body>
 </html>
